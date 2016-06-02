@@ -80,7 +80,7 @@ function notify_when_long_running_commands_finish_install() {
                 if [[ $time_taken -gt $LONG_RUNNING_COMMAND_TIMEOUT ]] &&
                     [[ -n $DISPLAY ]] &&
                     [[ ! " $LONG_RUNNING_IGNORE_LIST " == *" $appname "* ]] ; then
-                    local icon=dialog-information
+                    local icon="/home/eugen/.icons/Vibrancy-Kali/apps/48/terminal.png"
                     local urgency=low
                     if [[ $__preexec_exit_status != 0 ]]; then
                         icon=dialog-error
@@ -91,7 +91,7 @@ function notify_when_long_running_commands_finish_install() {
                         $notify \
                         -i $icon \
                         -u $urgency \
-                        "Command completed in $time_taken_human" \
+                        "Command completed" \
                         "$__udm_last_command"
                     else
                         echo -ne "\a"
